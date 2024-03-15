@@ -1,1 +1,1 @@
-# E-restaurant-laravel
+# E-restaurant
