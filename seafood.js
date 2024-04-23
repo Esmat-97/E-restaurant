@@ -18,33 +18,33 @@ database:'seafood'
 
 
 
-app.get('/',(req,res)=>{
-  const query = "SELECT * FROM  Doctors";
-  con.query(query, (err, result) => {
-    if (err) {
-        // If an error occurs, send an error response
-        console.error("Error executing query:", err);
-        res.status(500).json({ error: "Failed to fetch data" });
-    } else {
-        // If successful, send the fetched data as a response
-        res.json(result);
-    }
-});
-    
-});
-
-
-// app.post('/api', (req, res) => {
-//   const { name, speciality ,years_of_experience, hospital, location,  gender} = req.body;
-  
-//   // Insert data into MySQL
-//   const query = 'INSERT INTO Doctors (name,  specialty ,years_of_experience, hospital, location,  gender) VALUES (?,?,?,?,?,?)';
-//   con.query(query, [ name, speciality ,years_of_experience, hospital, location,  gender ], (error, results) => {
-//     if (error) throw error;
-//     console.log('Data inserted into MySQL');
-//     res.send('Data inserted into MySQL');
-//   });
+// app.get('/',(req,res)=>{
+//   const query = "SELECT * FROM  Doctors";
+//   con.query(query, (err, result) => {
+//     if (err) {
+//         // If an error occurs, send an error response
+//         console.error("Error executing query:", err);
+//         res.status(500).json({ error: "Failed to fetch data" });
+//     } else {
+//         // If successful, send the fetched data as a response
+//         res.json(result);
+//     }
 // });
+    
+// });
+
+
+app.post('/insertguests', (req, res) => {
+  const { fname ,lname ,email , password ,phone} = req.body;
+  
+  // Insert data into MySQL
+  const query = 'INSERT INTO guests (fname ,lname ,email , password ,phone) VALUES (?,?,?,?,?)';
+  con.query(query, [ fname ,lname ,email , password ,phone ], (error, results) => {
+    if (error) throw error;
+    console.log('Data inserted into MySQL');
+    res.send('Data inserted into MySQL');
+  });
+});
 
 
 

@@ -1,52 +1,43 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [FormsModule],
   template: `
   
-  <form class="row g-3">
+  <form class="row g-3" #main="ngForm" (ngSubmit)="formdata(main)">
+
   <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail4">
+    <label for="inputEmail4" class="form-label">First name</label>
+    <input type="text" class="form-control" id="inputEmail4"  name="fname"  #fname="ngModel"  required  ngModel>
   </div>
+
+
   <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword4">
+    <label for="inputPassword4" class="form-label">last name</label>
+    <input type="text" class="form-control" id="inputPassword4" name="lname" #lname="ngModel"  required  ngModel>
   </div>
+
+
   <div class="col-12">
-    <label for="inputAddress" class="form-label">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    <label for="inputAddress" class="form-label">Email</label>
+    <input type="email" class="form-control" id="inputAddress" name="email" #email="ngModel" required ngModel>
   </div>
+
   <div class="col-12">
-    <label for="inputAddress2" class="form-label">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+    <label for="inputAddress" class="form-label">password</label>
+    <input type="password" class="form-control" id="inputAddress" name="password" #password="ngModel" required ngModel>
   </div>
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">City</label>
-    <input type="text" class="form-control" id="inputCity">
-  </div>
-  <div class="col-md-4">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
+
   <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
+    <label for="inputAddress2" class="form-label"> Phone number</label>
+    <input type="text" class="form-control" id="inputAddress2" name="phone" #phone="ngModel" required ngModel>
   </div>
+
+ 
   <div class="col-12">
     <button type="submit" class="btn btn-primary">Sign in</button>
   </div>
@@ -57,4 +48,15 @@ import { RouterOutlet } from '@angular/router';
 })
 export class SignupComponent {
   title = 'myApp';
+
+  constructor(private htp:HttpClient){}
+
+  formdata(main:any){
+      
+console.log(main.value);
+this.htp.post('http://localhost:1999/insertguests', main.value).subscribe(res=>{
+
+})
+  }
+
 }
