@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule ],
   template: `
   
   <form #main="ngForm" (ngSubmit)="formdata(main)">
@@ -65,7 +66,8 @@ input[ type= submit]{
 export class LoginComponent {
   title = 'myApp';
 
-  constructor(private htp:HttpClient){}
+  constructor(private htp:HttpClient ,
+     private router:Router  ){}
   
   signdata:any={}
 
@@ -83,6 +85,9 @@ console.log('you are loggin');
 
 localStorage.setItem('email',info.email);
 localStorage.setItem('role',info.role);
+
+this.router.navigate(['/'])
+
 
  }
 }  })
