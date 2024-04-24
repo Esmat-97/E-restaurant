@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule ],
+  imports: [FormsModule , RouterLink],
   template: `
   
   <form #main="ngForm" (ngSubmit)="formdata(main)">
@@ -28,14 +29,19 @@ import { Router } from '@angular/router';
     </div>
   </div>
 
-
- 
  
   <input type="submit" class="btn btn-primary" value="Sign in">
+
 </form>
+
+
+
+ <span> dont have account  <a  routerLink="/signup">Sing up</a> </span>
   
   `,
-  styles: [`form{
+  styles: [`
+  
+  form{
     margin-left: 350px;
     margin-top: 150px;
     width:500px;
@@ -55,9 +61,14 @@ input[ type=password]{
   margin-left:50px;
 }
 
+span {
+  margin-left:450px;
+}
+
+
 input[ type= submit]{
   margin-left:190px;
-  margin-bottom:100px;
+  margin-bottom:50px;
 }
 `]
 })
