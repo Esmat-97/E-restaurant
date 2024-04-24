@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports:[RouterLink, CommonModule],
-  standalone:true,
+standalone:true,
+imports:[RouterLink,CommonModule,NgClass],
   template: `
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -17,13 +18,27 @@ import { CommonModule } from '@angular/common';
           <div class="navbar-nav">
             <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
             <a class="nav-link" routerLink="/features">Features</a>
-            @if( this.role){
-            <a class="nav-link" routerLink="/logout">Logout</a>
-            }
-            
-            @if(!this.role){
-            <a class="nav-link" routerLink="/login">Login</a>
-            }
+        
+              <a *ngIf="role" class="nav-link" routerLink="/logout">Logout</a>
+          
+       
+              <a *ngIf="!role" class="nav-link" routerLink="/login">Login</a>
+           
+             @if(role === 'admin'){
+            <div class="dropdown" >
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" (click)="toggleDropdown()">
+              Admin list
+            </button>
+            <ul class="dropdown-menu" [ngClass]="{ 'show': isDropdownOpen }">
+              <li><a class="dropdown-item" href="#"> users</a></li>
+              <li><a class="dropdown-item" href="#"> msgs</a></li>
+              <li><a class="dropdown-item" href="#"> reviews</a></li>
+              <li><a class="dropdown-item" href="#">Add products</a></li>
+              <li><a class="dropdown-item" href="#">Add users</a></li>
+            </ul>
+          </div>
+             }
+
           </div>
         </div>
       </div>
@@ -33,10 +48,14 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent {
   title = 'myApp';
+  role: string = '';
+  isDropdownOpen: boolean = false;
 
-  role:string='';
+  ngOnInit() {
+    this.role = localStorage.getItem('role') as string;
+  }
 
-  ngOnInit(){
-  this.role=  localStorage.getItem('role') as string
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 }
