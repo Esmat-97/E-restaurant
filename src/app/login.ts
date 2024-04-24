@@ -74,11 +74,16 @@ formdata(main:any){
 
 this.signdata=main.value
 
+
 this.htp.get('http://localhost:1999/guests').subscribe((infos:any)=>{
 
 for(let info of infos){
  if(info.email === this.signdata.email && info.password === this.signdata.password ){
 console.log('you are loggin');
+
+localStorage.setItem('email',info.email);
+localStorage.setItem('role',info.role);
+
  }
 }  })
 
