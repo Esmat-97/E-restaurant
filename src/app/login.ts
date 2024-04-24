@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [FormsModule],
   template: `
   
-  <form>
+  <form #main="ngForm" (ngSubmit)="formdata(main)">
+
   <br>
   <br>
   <div class="row mb-3">
     <label for="inputEmail3" class="col-sm-1 col-form-label">Email</label>
     <div class="col-sm-6">
-      <input type="email" class="form-control" id="inputEmail3">
+      <input type="email" class="form-control" id="inputEmail3" name="email" #email ngModel required>
     </div>
   </div>
 
@@ -21,7 +23,7 @@ import { RouterOutlet } from '@angular/router';
   <div class="row mb-3">
     <label for="inputPassword3" class="col-sm-1 col-form-label">Password</label>
     <div class="col-sm-6">
-      <input type="password" class="form-control" id="inputPassword3">
+      <input type="password" class="form-control" id="inputPassword3"   name="password" #password ngModel required>
     </div>
   </div>
 
@@ -58,6 +60,31 @@ input[ type= submit]{
 }
 `]
 })
+
+
 export class LoginComponent {
   title = 'myApp';
+
+  constructor(private htp:HttpClient){}
+  
+  signdata:any={}
+
+
+formdata(main:any){
+
+this.signdata=main.value
+
+this.htp.get('http://localhost:1999/guests').subscribe((infos:any)=>{
+
+for(let info of infos){
+ if(info.email === this.signdata.email && info.password === this.signdata.password ){
+console.log('you are loggin');
+ }
+}  })
+
+}
+
+
+
+
 }

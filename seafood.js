@@ -18,27 +18,29 @@ database:'seafood'
 
 
 
-// app.get('/',(req,res)=>{
-//   const query = "SELECT * FROM  Doctors";
-//   con.query(query, (err, result) => {
-//     if (err) {
-//         // If an error occurs, send an error response
-//         console.error("Error executing query:", err);
-//         res.status(500).json({ error: "Failed to fetch data" });
-//     } else {
-//         // If successful, send the fetched data as a response
-//         res.json(result);
-//     }
-// });
+app.get('/guests',(req,res)=>{
+  const query = "SELECT * FROM  guests";
+  con.query(query, (err, result) => {
+    if (err) {
+        // If an error occurs, send an error response
+        console.error("Error executing query:", err);
+        res.status(500).json({ error: "Failed to fetch data" });
+    } else {
+        // If successful, send the fetched data as a response
+        res.json(result);
+    }
+});
     
-// });
+});
+
+
 
 
 app.post('/insertguests', (req, res) => {
-  const { fname ,lname ,email , password ,phone} = req.body;
+  const { fname ,lname ,email , password ,phone } = req.body;
   
   // Insert data into MySQL
-  const query = 'INSERT INTO guests (fname ,lname ,email , password ,phone) VALUES (?,?,?,?,?)';
+  const query = 'INSERT INTO guests (fname ,lname ,email , password ,phone ) VALUES (?,?,?,?,?)';
   con.query(query, [ fname ,lname ,email , password ,phone ], (error, results) => {
     if (error) throw error;
     console.log('Data inserted into MySQL');
