@@ -25,7 +25,7 @@ import { HttpClient } from '@angular/common/http';
 
   <div class="col-md-6">
   <label for="inputPassword4" class="form-label"> image </label>
-  <input type="file" class="form-control" id="inputPassword4" name="image" #image="ngModel"  required  ngModel>
+  <input type="file" (change)=" onFileSelected($event)" class="form-control" id="inputPassword4" name="image" #image="ngModel"  required  ngModel>
 </div>
 
 
@@ -54,13 +54,33 @@ import { HttpClient } from '@angular/common/http';
   styles: [``]
 })
 export class AddproductsComponent {
-  title = 'myApp';
+
+  
+selectedFile: File | null = null; 
+
+imagename:string='';
+
+products:any={};
 
   constructor(private htp:HttpClient){}
 
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0]; // Get the first file selected by the user
+    if (this.selectedFile) {
+     this.imagename = this.selectedFile.name; // Extract the file name
+    }
+  }
+
+
   formdata(main:any){
-      
-console.log(main.value);
+   this.products= main.value
+
+   if (this.selectedFile) {
+    this.products.image=this.imagename
+   }
+
+console.log(this.products);
 this.htp.post('http://localhost:1999/insertproducts', main.value).subscribe(res=>{
 
 })
