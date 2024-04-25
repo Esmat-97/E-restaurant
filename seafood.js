@@ -35,6 +35,21 @@ app.get('/guests',(req,res)=>{
 
 
 
+app.get('/products',(req,res)=>{
+  const query = "SELECT * FROM  products";
+  con.query(query, (err, result) => {
+    if (err) {
+        // If an error occurs, send an error response
+        console.error("Error executing query:", err);
+        res.status(500).json({ error: "Failed to fetch data" });
+    } else {
+        // If successful, send the fetched data as a response
+        res.json(result);
+    }
+});
+    
+});
+
 
 app.post('/insertguests', (req, res) => {
   const { fname ,lname ,email , password ,phone } = req.body;
