@@ -17,6 +17,6 @@ export class LogoutComponent {
 
   ngOnInit(){
     this.auth.logout();
-    this.router.navigate(['/login'])
+    this.router.navigate([''])
   }
 }

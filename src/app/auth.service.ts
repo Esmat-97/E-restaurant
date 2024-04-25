@@ -13,7 +13,7 @@ localStorage.removeItem('role')
 }
 
 
-isAuthenticated(): boolean {
+isLoggedIn(): boolean {
 
   return localStorage.getItem('email') ? true : false ;
   
