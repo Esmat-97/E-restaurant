@@ -50,6 +50,19 @@ app.post('/insertguests', (req, res) => {
 
 
 
+app.post('/insertproducts', (req, res) => {
+  const { product_name , description , image , price , stock ,guest_id } = req.body;
+  
+  // Insert data into MySQL
+  const query = 'INSERT INTO products ( product_name , description , image , price , stock ,guest_id ) VALUES (?,?,?,?,?,?)';
+  con.query(query, [ product_name , description , image , price , stock ,guest_id ], (error, results) => {
+    if (error) throw error;
+    console.log('Data inserted into MySQL');
+    res.send('Data inserted into MySQL');
+  });
+});
+
+
 
 
 

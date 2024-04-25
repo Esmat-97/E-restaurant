@@ -33,7 +33,7 @@ imports:[RouterLink,CommonModule,NgClass],
               <li><a class="dropdown-item" href="#"> users</a></li>
               <li><a class="dropdown-item" href="#"> msgs</a></li>
               <li><a class="dropdown-item" href="#"> reviews</a></li>
-              <li><a class="dropdown-item" href="#">Add products</a></li>
+              <li><a class="dropdown-item" routerLink="Addproduct">Add products</a></li>
               <li><a class="dropdown-item" href="#">Add users</a></li>
             </ul>
           </div>
