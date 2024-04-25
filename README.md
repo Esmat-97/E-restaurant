@@ -28,3 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Amin page
  ![customer Image](./src/assets/admin.png)
+
+ 
+# Customer page
+ ![customer Image](./src/assets/customer.png)
