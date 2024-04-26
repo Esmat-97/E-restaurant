@@ -30,7 +30,7 @@ imports:[RouterLink,CommonModule,NgClass],
               Admin list
             </button>
             <ul class="dropdown-menu" [ngClass]="{ 'show': isDropdownOpen }">
-              <li><a class="dropdown-item" href="#"> users</a></li>
+              <li><a class="dropdown-item" routerLink="users"> users</a></li>
               <li><a class="dropdown-item" href="#"> msgs</a></li>
               <li><a class="dropdown-item" href="#"> reviews</a></li>
               <li><a class="dropdown-item" routerLink="Addproduct">Add products</a></li>
