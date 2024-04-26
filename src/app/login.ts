@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { GuestsService } from './services/guests.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
@@ -77,7 +77,7 @@ input[ type= submit]{
 export class LoginComponent {
   title = 'myApp';
 
-  constructor(private htp:HttpClient ,
+  constructor(private gue:GuestsService,
      private router:Router  ){}
   
   signdata:any={}
@@ -88,7 +88,7 @@ formdata(main:any){
 this.signdata=main.value
 
 
-this.htp.get('http://localhost:1999/guests').subscribe((infos:any)=>{
+this.gue.getguests().subscribe((infos:any)=>{
 
 for(let info of infos){
  if(info.email === this.signdata.email && info.password === this.signdata.password ){

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { GuestsService } from './services/guests.service';
 import { CommonModule } from '@angular/common';
 import { NgFor } from '@angular/common';
 
@@ -35,10 +35,10 @@ export class UsersComponent {
 
   guests:any=[];
 
-  constructor(private htp:HttpClient){}
+  constructor(private gue:GuestsService){}
 
   ngOnInit(){
-    this.htp.get('http://localhost:1999/guests').subscribe((res:any)=>{
+    this.gue.getguests().subscribe((res:any)=>{
    this.guests=res
  console.log(this.guests)
     })

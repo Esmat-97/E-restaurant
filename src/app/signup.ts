@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { GuestsService } from './services/guests.service';
 
 @Component({
   selector: 'app-signup',
@@ -49,12 +49,12 @@ import { HttpClient } from '@angular/common/http';
 export class SignupComponent {
   title = 'myApp';
 
-  constructor(private htp:HttpClient){}
+  constructor(private gue:GuestsService){}
 
   formdata(main:any){
       
 console.log(main.value);
-this.htp.post('http://localhost:1999/insertguests', main.value).subscribe(res=>{
+this.gue.insertguests( main.value).subscribe(res=>{
 
 })
   }

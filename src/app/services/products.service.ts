@@ -18,8 +18,6 @@ getproducts() :Observable<any[]>{
 }
 
 
-
-
 insertproducts(products:any) :Observable<any>{
 
   return this.htp.post<any>('http://localhost:1999/products/insert',products)
