@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { ProductsService } from './services/products.service';
 
 @Component({
   selector: 'app-products',
@@ -52,16 +52,22 @@ export class ProductsComponent {
 data:any=[];
 role:string='';
 
-  constructor(private htp:HttpClient){}
+
+constructor(private pro:ProductsService){}
+
 
   ngOnInit(){
   
-     this.role = localStorage.getItem('role') as string;
+   this.role = localStorage.getItem('role') as string;
     
-this.htp.get('http://localhost:1999/products').subscribe((res:any)=>{
+this.pro.getproducts().subscribe((res:any[])=>{
+
     this.data=res;
 console.log(this.data)
-})
+
+   })
+
+
   }
 
 }

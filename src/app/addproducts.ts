@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { ProductsService } from './services/products.service';
 
 @Component({
   selector: 'app-addproducts',
@@ -62,7 +62,7 @@ imagename:string='';
 
 products:any={};
 
-  constructor(private htp:HttpClient){}
+  constructor(private pro:ProductsService){}
 
 
   onFileSelected(event: any) {
@@ -81,8 +81,8 @@ products:any={};
    }
 
 console.log(this.products);
-this.htp.post('http://localhost:1999/insertproducts', main.value).subscribe(res=>{
-
+this.pro.insertproducts( this.products).subscribe(res=>{
+  console.log('Product added successfully:', res);
 })
   }
 
