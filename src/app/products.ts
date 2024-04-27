@@ -19,7 +19,7 @@ import { ProductsService } from './services/products.service';
         <p class="card-text">{{user.price}} LE</p>
 
         @if(role === 'admin'){
-        <button class="btn btn-danger"> delete</button>
+        <button class="btn btn-danger" (click)="del(user.product_id)"> delete</button>
         <button class="btn btn-warning"> update</button>
         <button class="btn btn-info"> show more</button>
         <button class="btn btn-light"> Add to cart</button>
@@ -54,20 +54,25 @@ role:string='';
 
 
 constructor(private pro:ProductsService){}
-
+/* get */
 
   ngOnInit(){
-  
-   this.role = localStorage.getItem('role') as string;
-    
+  this.role = localStorage.getItem('role') as string;
 this.pro.getproducts().subscribe((res:any[])=>{
-
     this.data=res;
 console.log(this.data)
 
    })
-
-
   }
+
+
+  /* delete */
+del(id:number){
+this.pro.deleteproducts(id).subscribe(res=>{
+  
+})
+}
+
+
 
 }
