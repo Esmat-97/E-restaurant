@@ -21,4 +21,10 @@ insertguests(guests:any) :Observable<any>{
   return this.htp.post<any>('http://localhost:1999/guests/insert',guests)
 
 }
+
+
+deleteguests(id:any) :Observable<any>{
+  return this.htp.delete<any>(`http://localhost:1999/guests/del?id=${id}`)
+
+}
 }

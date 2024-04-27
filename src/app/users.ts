@@ -15,6 +15,7 @@ import { NgFor } from '@angular/common';
       <th scope="col">First</th>
       <th scope="col">Last</th>
       <th scope="col">Handle</th>
+      <th scope="col">delete</th>
     </tr>
   </thead>
   <tbody *ngFor="let x of guests ">
@@ -23,6 +24,8 @@ import { NgFor } from '@angular/common';
       <td>{{x.fname}}</td>
       <td>{{x.email}}</td>
       <td>{{x.role}}</td>
+      <td><button (click)="del(x.guest_id)">delete</button></td>
+
     </tr>
   
   </tbody>
@@ -37,10 +40,20 @@ export class UsersComponent {
 
   constructor(private gue:GuestsService){}
 
+  /* get */
+
   ngOnInit(){
     this.gue.getguests().subscribe((res:any)=>{
    this.guests=res
  console.log(this.guests)
     })
   }
+
+
+  /*delete*/
+del(id:number){
+this.gue.deleteguests(id).subscribe(res=>{
+
+})
+}
 }

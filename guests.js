@@ -37,4 +37,14 @@ app.post('/insert', (req, res) => {
     });
 });
 
+
+app.delete('/del', (req, res) => {
+    const {id }= req.query;
+    const query = 'DELETE from guests where guest_id=? ';
+    con.query(query, [id], (error, results) => {
+        if (error) throw error;
+        console.log('Data deleted from MySQL');
+    });
+});
+
 module.exports = app;
