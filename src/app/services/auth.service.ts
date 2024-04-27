@@ -9,6 +9,7 @@ logout(){
 
 localStorage.removeItem('email')
 localStorage.removeItem('role')
+localStorage.removeItem('user_id')
 
 }
 

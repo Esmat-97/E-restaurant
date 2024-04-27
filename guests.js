@@ -15,6 +15,23 @@ const con = mysql.createConnection({
     database: 'seafood'
 });
 
+
+app.get('/select', (req, res) => {
+    const { email, password } = req.query;
+    const query = 'SELECT * FROM guests where email=? AND password=?';
+    con.query(query, [email, password], (error, results) => {
+        if (error) {
+            console.error('Error executing the query:', error);
+            res.status(500).json({ error: 'Internal server error' });
+            return; // Exit the function to prevent further execution
+        }
+        // console.log('Data selected from MySQL:', results);
+        res.json(results); // Sending the selected data back as a JSON response
+    });
+    
+});
+
+
 app.get('/', (req, res) => {
     const query = "SELECT * FROM guests";
     con.query(query, (err, result) => {
@@ -26,6 +43,8 @@ app.get('/', (req, res) => {
         }
     });
 });
+
+
 
 app.post('/insert', (req, res) => {
     const { fname, lname, email, password, phone } = req.body;

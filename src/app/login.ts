@@ -87,26 +87,34 @@ formdata(main:any){
 
 this.signdata=main.value
 
+console.log(this.signdata)
 
-this.gue.getguests().subscribe((infos:any)=>{
+this.gue.selectguests(this.signdata.email, this.signdata.password).subscribe((infos ) => {
+    console.log('Infos:', infos);
 
-for(let info of infos){
- if(info.email === this.signdata.email && info.password === this.signdata.password ){
-console.log('you are loggin');
+    // Assuming infos is an array, you can access the first element if you expect only one result
+    const info = infos[0];
 
-localStorage.setItem('email',info.email);
-localStorage.setItem('role',info.role);
-localStorage.setItem('user_id',info.guest_id);
+    if (info) {
+      // Data is available, you can proceed with storing in localStorage or any other operations
+      localStorage.setItem('email', info.email);
+      localStorage.setItem('role', info.role);
+      localStorage.setItem('user_id', info.guest_id);
+      this.router.navigate(['/']);
+    } else {
+      console.log('No data returned.');
+    }
+  },
+  (error) => {
+    console.error('Error:', error);
+    // Handle error if needed
+  }
+);
 
-this.router.navigate(['/'])
-
-
- }
-}  })
 
 }
 
 
-
-
 }
+
+
