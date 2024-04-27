@@ -41,7 +41,7 @@ import { ProductsService } from './services/products.service';
 
   <div class="col-12">
     <label for="inputAddress2" class="form-label"> guest_id </label>
-    <input type="text" class="form-control" id="inputAddress2" name="guest_id" #guest_id="ngModel" required ngModel>
+    <input type="text" class="form-control" id="inputAddress2" name="guest_id" #guest_id="ngModel" required [(ngModel)]="id">
   </div>
 
  
@@ -60,9 +60,27 @@ selectedFile: File | null = null;
 
 imagename:string='';
 
+
 products:any={};
 
   constructor(private pro:ProductsService){}
+  
+
+/*    */
+
+
+  id:string='';
+
+ngOnInit(){
+
+  this.id=localStorage.getItem('user_id') as string;
+}
+
+
+
+
+
+  /*   */
 
 
   onFileSelected(event: any) {
@@ -71,6 +89,12 @@ products:any={};
      this.imagename = this.selectedFile.name; // Extract the file name
     }
   }
+
+
+
+
+
+/*   */
 
 
   formdata(main:any){

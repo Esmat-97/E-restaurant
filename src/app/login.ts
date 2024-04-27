@@ -96,6 +96,7 @@ console.log('you are loggin');
 
 localStorage.setItem('email',info.email);
 localStorage.setItem('role',info.role);
+localStorage.setItem('user_id',info.guest_id);
 
 this.router.navigate(['/'])
 
