@@ -5,6 +5,7 @@ import { SignupComponent } from './signup';
 import { LogoutComponent } from './logout';
 import { AddproductsComponent } from './addproducts';
 import { UsersComponent } from './users';
+import { AddusersComponent } from './addusers';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
@@ -12,5 +13,6 @@ export const routes: Routes = [
     {path:'login',component:LoginComponent},
     {path:'logout',component:LogoutComponent},
     {path:'Addproduct',component:AddproductsComponent},
+    {path:'Addusers',component:AddusersComponent},
     {path:'users',component:UsersComponent}
 ];
