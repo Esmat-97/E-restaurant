@@ -37,4 +37,13 @@ deleteguests(id:any) :Observable<any>{
   return this.htp.delete<any>(`http://localhost:1999/guests/del?id=${id}`)
 
 }
+
+
+updateguests(data:any) :Observable<any>{
+  console.log(data)
+  return this.htp.put<any>(`http://localhost:1999/guests/update`,data)
+
+}
+
+
 }
