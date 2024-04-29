@@ -18,10 +18,7 @@ imports:[RouterLink,CommonModule,NgClass],
           <div class="navbar-nav">
             <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
             <a class="nav-link" routerLink="/contact">contact</a>
-        
               <a *ngIf="role" class="nav-link" routerLink="/logout">Logout</a>
-          
-       
               <a *ngIf="!role" class="nav-link" routerLink="/login">Login</a>
            
              @if(role === 'admin'){
@@ -41,6 +38,18 @@ imports:[RouterLink,CommonModule,NgClass],
 
           </div>
         </div>
+
+
+        <div class="btn-group dropstart">
+        <a type="button" class= "dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" (click)="toggleDropstart()">
+          <img class="rounded-circle" src="image.jpg" width="35" />
+          </a>
+        <ul class="dropdown-menu" [ngClass]="{ 'show': isDropstartOpen }">
+          <li><a class="dropdown-item" href="myprofile.php">My profile</a></li>
+          <li><a class="dropdown-item" href="logout.php">logout</a></li>
+        </ul>
+      </div>
+
       </div>
     </nav>
   `,
@@ -50,6 +59,7 @@ export class HeaderComponent {
   title = 'myApp';
   role: string = '';
   isDropdownOpen: boolean = false;
+  isDropstartOpen: boolean = false;
 
   ngOnInit() {
     this.role = localStorage.getItem('role') as string;
@@ -57,5 +67,10 @@ export class HeaderComponent {
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+
+  toggleDropstart() {
+    this.isDropstartOpen = !this.isDropstartOpen;
   }
 }
