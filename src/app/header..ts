@@ -17,7 +17,7 @@ imports:[RouterLink,CommonModule,NgClass],
         <div  class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
-            <a class="nav-link" routerLink="/features">Features</a>
+            <a class="nav-link" routerLink="/contact">contact</a>
         
               <a *ngIf="role" class="nav-link" routerLink="/logout">Logout</a>
           

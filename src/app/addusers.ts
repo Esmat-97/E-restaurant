@@ -72,7 +72,7 @@ import { FormsModule } from '@angular/forms';
 
    
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Add users</button>
+    <button type="submit" class="btn btn-primary"  [disabled]="main.invalid">Add users</button>
   </div>
 </form>
   `,

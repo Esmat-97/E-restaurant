@@ -6,6 +6,8 @@ import { LogoutComponent } from './logout';
 import { AddproductsComponent } from './addproducts';
 import { UsersComponent } from './users';
 import { AddusersComponent } from './addusers';
+import { ContactComponent } from './contact';
+
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
@@ -14,5 +16,8 @@ export const routes: Routes = [
     {path:'logout',component:LogoutComponent},
     {path:'Addproduct',component:AddproductsComponent},
     {path:'Addusers',component:AddusersComponent},
-    {path:'users',component:UsersComponent}
+    {path:'users',component:UsersComponent},
+    {path:'contact',component:ContactComponent}
+
+
 ];
