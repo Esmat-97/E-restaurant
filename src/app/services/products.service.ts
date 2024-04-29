@@ -24,8 +24,14 @@ insertproducts(products:any) :Observable<any>{
 
 
 deleteproducts(id:any) :Observable<any>{
-
   return this.htp.delete<any>(`http://localhost:1999/products/del?id=${id}`)
+}
+
+
+updateproducts(main:any) :Observable<any>{
+  console.log(main)
+
+  return this.htp.put<any>(`http://localhost:1999/products/update`,main)
 
 }
 

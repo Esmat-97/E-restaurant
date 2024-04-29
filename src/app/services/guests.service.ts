@@ -11,25 +11,18 @@ export class GuestsService {
 
 
   selectguests(email:string ,password:string) :Observable<any[]>{
-
-
     return this.htp.get<any[]>(`http://localhost:1999/guests/select?email=${email}&password=${password}`)
-  
   }
 
 
 
 getguests() :Observable<any[]>{
-
   return this.htp.get<any[]>('http://localhost:1999/guests')
-
 }
 
 
 insertguests(guests:any) :Observable<any>{
-
   return this.htp.post<any>('http://localhost:1999/guests/insert',guests)
-
 }
 
 
