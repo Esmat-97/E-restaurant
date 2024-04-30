@@ -16,6 +16,19 @@ const con = mysql.createConnection({
 });
 
 
+app.get('/history', (req, res) => {
+
+    const { id } = req.query;
+    const query = "SELECT * FROM  msgs where guest_id = ?";
+    con.query(query,[id] ,(err, result) => {
+        if (err) {
+            console.error("Error executing query:", err);
+            res.status(500).json({ error: "Failed to fetch data" });
+        } else {
+            res.json(result);
+        }
+    });
+});
 
 
 
@@ -55,18 +68,18 @@ app.delete('/del', (req, res) => {
 
 
 
-// app.put('/update', (req, res) => {
-//     const {  email ,id } = req.body; 
-//     console.log(email);
-//     console.log(id);
-//     const query = 'UPDATE guests SET email = ? WHERE guest_id = ?';
-//     con.query(query, [ email ,id] , (error, results) => {
-//       if (error) {
-//         console.error('Error updating user:', error);
-//         return res.status(500).send('Error updating user');
-//       }
-//       console.log('User updated in MySQL');
-//       res.status(200).send('User updated in MySQL');
-//     });
-//   });
+app.put('/update', (req, res) => {
+    const {  content ,id } = req.body; 
+    console.log(content);
+    console.log(id);
+    const query = 'UPDATE msgs SET  content = ? WHERE msgs_id = ?';
+    con.query(query, [ content ,id] , (error, results) => {
+      if (error) {
+        console.error('Error updating user:', error);
+        return res.status(500).send('Error updating user');
+      }
+      console.log('User updated in MySQL');
+      res.status(200).send('User updated in MySQL');
+    });
+  });
 module.exports = app;
