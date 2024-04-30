@@ -44,9 +44,7 @@ this.userid=localStorage.getItem('user_id')as string
 
 
   formdata(main:any){
-
     console.log(main.value);
-
     this.msg.insertmsgs(main.value).subscribe(res=>{
 
     })

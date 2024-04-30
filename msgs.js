@@ -20,7 +20,7 @@ const con = mysql.createConnection({
 
 
 app.get('/', (req, res) => {
-    const query = "SELECT * FROM guests";
+    const query = "SELECT * FROM  msgs INNER JOIN guests on msgs.guest_id = guests.guest_id ";
     con.query(query, (err, result) => {
         if (err) {
             console.error("Error executing query:", err);

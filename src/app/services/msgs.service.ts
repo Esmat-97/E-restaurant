@@ -11,7 +11,7 @@ export class MsgsService {
   constructor(private htp:HttpClient) { }
 
   getmsgs():Observable<any[]> {
-    return this.htp.get<any[]>('http://localhost:1999/msg');
+    return this.htp.get<any[]>('http://localhost:1999/msgs');
       }
 
 

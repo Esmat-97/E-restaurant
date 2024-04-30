@@ -7,6 +7,7 @@ import { AddproductsComponent } from './addproducts';
 import { UsersComponent } from './users';
 import { AddusersComponent } from './addusers';
 import { ContactComponent } from './contact';
+import { MsgsComponent } from './msgs';
 
 
 export const routes: Routes = [
@@ -17,7 +18,8 @@ export const routes: Routes = [
     {path:'Addproduct',component:AddproductsComponent},
     {path:'Addusers',component:AddusersComponent},
     {path:'users',component:UsersComponent},
-    {path:'contact',component:ContactComponent}
+    {path:'contact',component:ContactComponent},
+    {path:'msgs',component:MsgsComponent}
 
 
 ];

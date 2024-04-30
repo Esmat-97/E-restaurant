@@ -17,7 +17,7 @@ imports:[RouterLink,CommonModule,NgClass],
         <div  class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
-            <a class="nav-link" routerLink="/contact">contact</a>
+            <a *ngIf="role" class="nav-link" routerLink="/contact">contact</a>
               <a *ngIf="role" class="nav-link" routerLink="/logout">Logout</a>
               <a *ngIf="!role" class="nav-link" routerLink="/login">Login</a>
            
@@ -28,7 +28,7 @@ imports:[RouterLink,CommonModule,NgClass],
             </button>
             <ul class="dropdown-menu" [ngClass]="{ 'show': isDropdownOpen }">
               <li><a class="dropdown-item" routerLink="users"> users</a></li>
-              <li><a class="dropdown-item" href="#"> msgs</a></li>
+              <li><a class="dropdown-item" routerLink="/msgs"> msgs</a></li>
               <li><a class="dropdown-item" href="#"> reviews</a></li>
               <li><a class="dropdown-item" routerLink="Addproduct">Add products</a></li>
               <li><a class="dropdown-item"  routerLink="Addusers">Add users</a></li>
