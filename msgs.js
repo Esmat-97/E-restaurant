@@ -19,24 +19,24 @@ const con = mysql.createConnection({
 
 
 
-// app.get('/', (req, res) => {
-//     const query = "SELECT * FROM guests";
-//     con.query(query, (err, result) => {
-//         if (err) {
-//             console.error("Error executing query:", err);
-//             res.status(500).json({ error: "Failed to fetch data" });
-//         } else {
-//             res.json(result);
-//         }
-//     });
-// });
+app.get('/', (req, res) => {
+    const query = "SELECT * FROM guests";
+    con.query(query, (err, result) => {
+        if (err) {
+            console.error("Error executing query:", err);
+            res.status(500).json({ error: "Failed to fetch data" });
+        } else {
+            res.json(result);
+        }
+    });
+});
 
 
 
 app.post('/insert', (req, res) => {
     const { id ,text } = req.body;
     const query = 'INSERT INTO msgs (content , guest_id) VALUES (?, ?)';
-    con.query(query, [id , text], (error, results) => {
+    con.query(query, [text , id], (error, results) => {
         if (error) throw error;
         console.log('Data inserted into MySQL');
         res.send('Data inserted into MySQL');

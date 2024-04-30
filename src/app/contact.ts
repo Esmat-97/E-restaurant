@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MsgsService } from './services/msgs.service';
 
 
 @Component({
@@ -30,6 +31,9 @@ import { FormsModule } from '@angular/forms';
   styles: [``]
 })
 export class ContactComponent {
+
+constructor(private msg:MsgsService){}
+
   title = 'myApp';
   userid:string='';
 
@@ -40,6 +44,12 @@ this.userid=localStorage.getItem('user_id')as string
 
 
   formdata(main:any){
+
+    console.log(main.value);
+
+    this.msg.insertmsgs(main.value).subscribe(res=>{
+
+    })
 
   }
 }
