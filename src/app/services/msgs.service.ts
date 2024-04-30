@@ -21,6 +21,16 @@ return this.htp.post('http://localhost:1999/msgs/insert',msg);
   }
 
 
+  deletemsgs(id:any) :Observable<any>{
+    return this.htp.delete<any>(`http://localhost:1999/msgs/del?id=${id}`)
+  }
+  
+  
+  // updatemsgs(main:any) :Observable<any>{
+  //   console.log(main)
+  //   return this.htp.put<any>(`http://localhost:1999/msgs/update`,main)
+  
+  // }
 
 
 }

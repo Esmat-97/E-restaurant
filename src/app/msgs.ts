@@ -18,6 +18,7 @@ import { MsgsService } from './services/msgs.service';
       <th scope="col">the date</th>
       <th scope="col">first name</th>
       <th scope="col">email</th>
+      <th scope="col">delete</th>
    
     </tr>
   </thead>
@@ -29,6 +30,34 @@ import { MsgsService } from './services/msgs.service';
       <td>{{ msg.the_date }}</td>
       <td>{{ msg.fname }}</td>
       <td>{{ msg.email }}</td>
+
+      
+
+      <td> 
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" [attr.data-bs-target]="'#delModal' + msg.msgs_id">
+      delete
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" [id]="'delModal' + msg.msgs_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Do you want to delete guest with ID: {{ msg.msgs_id}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" (click)="del(msg.msgs_id)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      </td>
     </tr>
   </tbody>
 </table>
@@ -55,13 +84,15 @@ export class MsgsComponent {
   }
 
 
+
+
   /*delete*/
 
-// del(id:number){
-// this.gue.deleteguests(id).subscribe(res=>{
+del(id:number){
+this.msg.deletemsgs(id).subscribe(res=>{
 
-// })
-// }
+})
+}
 
 
 
