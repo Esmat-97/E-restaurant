@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { ReviewService } from './services/review.service';
 import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-showreview',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor,FormsModule],
   template: `
   <table class="table table-striped">
   <thead>
@@ -71,11 +72,16 @@ import { NgFor } from '@angular/common';
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            Do you want to delete guest with ID: {{ msg.review_id}}
+            Do you want to update  review with ID: {{ msg.review_id}}
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" (click)="accept(msg.review_id)">Delete</button>
+
+            <form #main="ngForm" (ngSubmit)="acceptdata(main)" >
+            <input type="hidden" name="id" #id="ngModel" [(ngModel)]=" msg.review_id" >
+            <button type="submit" class="btn btn-primary">Accept</button>
+            </form>
+
           </div>
         </div>
       </div>
@@ -115,8 +121,9 @@ this.rev.delreview(id).subscribe(res=>{
 
 /* accept */
 
-accept(id:any){
-  this.rev.acceptreview(id).subscribe(res=>{
+acceptdata(main:any){
+  console.log(main.value)
+  this.rev.acceptreview(main.value).subscribe(res=>{
   })
   }
 

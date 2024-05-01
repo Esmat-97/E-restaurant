@@ -24,8 +24,10 @@ export class ReviewService {
   delreview(id:any):Observable<any>{
     return this.http.delete<any>(`${HOST_NAME}/review/del?id=${id}`)
   }
+  
 
   acceptreview(id:any):Observable<any>{
+    console.log(id)
     return this.http.put<any>(`${HOST_NAME}/review/accept`,id)
   }
 

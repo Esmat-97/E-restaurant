@@ -16,20 +16,7 @@ const con = mysql.createConnection({
 });
 
 
-app.get('/select', (req, res) => {
-    const { email, password } = req.query;
-    const query = 'SELECT * FROM guests where email=? AND password=?';
-    con.query(query, [email, password], (error, results) => {
-        if (error) {
-            console.error('Error executing the query:', error);
-            res.status(500).json({ error: 'Internal server error' });
-            return; // Exit the function to prevent further execution
-        }
-        // console.log('Data selected from MySQL:', results);
-        res.json(results); // Sending the selected data back as a JSON response
-    });
-    
-});
+
 
 
 app.get('/', (req, res) => {
@@ -68,17 +55,23 @@ app.delete('/del', (req, res) => {
 
 
 app.put('/accept', (req, res) => {
-    const { id } = req.body; 
-    console.log(id);
+    console.log('Incoming request body:', req.body);
 
-    const query = 'UPDATE review SET  status="accepted"  WHERE review_id = ?';
+    const { id } = req.body; 
+    console.log('Extracted ID:', id);
+
+    const query = 'UPDATE review SET status="accepted" WHERE review_id = ?';
     con.query(query, [id] , (error, results) => {
       if (error) {
-        console.error('Error updating user:', error);
-        return res.status(500).send('Error updating user');
+        console.error('Error updating review:', error);
+        return res.status(500).send('Error updating review');
       }
-      console.log('User updated in MySQL');
-      res.status(200).send('User updated in MySQL');
+      console.log('Review updated in MySQL');
+      res.status(200).send('Review updated in MySQL');
     });
-  });
+});
+
+
+
+
 module.exports = app;
