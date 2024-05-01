@@ -45,11 +45,10 @@ app.get('/', (req, res) => {
 });
 
 
-
 app.post('/insert', (req, res) => {
-    const { fname, lname, email, password, phone } = req.body;
-    const query = 'INSERT INTO guests (fname, lname, email, password, phone) VALUES (?, ?, ?, ?, ?)';
-    con.query(query, [fname, lname, email, password, phone], (error, results) => {
+    const { id ,text } = req.body;
+    const query = 'INSERT INTO review (content , guest_id) VALUES (?, ?)';
+    con.query(query, [text , id], (error, results) => {
         if (error) throw error;
         console.log('Data inserted into MySQL');
         res.send('Data inserted into MySQL');
@@ -57,32 +56,4 @@ app.post('/insert', (req, res) => {
 });
 
 
-app.delete('/del', (req, res) => {
-    const {id }= req.query;
-    const query = 'DELETE from guests where guest_id=? ';
-    con.query(query, [id], (error, results) => {
-        if (error) throw error;
-        console.log('Data deleted from MySQL');
-    });
-});
-
-
-
-app.put('/update', (req, res) => {
-    const {  email ,id } = req.body; 
-    console.log(email);
-    console.log(id);
-    const query = 'UPDATE guests SET email = ? WHERE guest_id = ?';
-    con.query(query, [ email ,id] , (error, results) => {
-      if (error) {
-        console.error('Error updating user:', error);
-        return res.status(500).send('Error updating user');
-      }
-      console.log('User updated in MySQL');
-      res.status(200).send('User updated in MySQL');
-    });
-  });
-
-
-  
 module.exports = app;

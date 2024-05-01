@@ -18,6 +18,7 @@ imports:[RouterLink,CommonModule,NgClass],
           <div class="navbar-nav">
             <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
             <a *ngIf="role" class="nav-link" routerLink="/contact">contact</a>
+            <a *ngIf="role" class="nav-link" routerLink="/review">review</a>
               <a *ngIf="role" class="nav-link" routerLink="/logout">Logout</a>
               <a *ngIf="!role" class="nav-link" routerLink="/login">Login</a>
            

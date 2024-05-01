@@ -8,6 +8,7 @@ import { UsersComponent } from './users';
 import { AddusersComponent } from './addusers';
 import { ContactComponent } from './contact';
 import { MsgsComponent } from './msgs';
+import { ReviewComponent } from './review';
 
 
 export const routes: Routes = [
@@ -19,6 +20,7 @@ export const routes: Routes = [
     {path:'Addusers',component:AddusersComponent},
     {path:'users',component:UsersComponent},
     {path:'contact',component:ContactComponent},
+    {path:'review',component:ReviewComponent},
     {path:'msgs',component:MsgsComponent}
 
 
