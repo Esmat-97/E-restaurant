@@ -56,4 +56,29 @@ app.post('/insert', (req, res) => {
 });
 
 
+app.delete('/del', (req, res) => {
+    const {id }= req.query;
+    const query = 'DELETE from review where review_id=? ';
+    con.query(query, [id], (error, results) => {
+        if (error) throw error;
+        console.log('Data deleted from MySQL');
+    });
+});
+
+
+
+app.put('/accept', (req, res) => {
+    const { id } = req.body; 
+    console.log(id);
+
+    const query = 'UPDATE review SET  status="accepted"  WHERE review_id = ?';
+    con.query(query, [id] , (error, results) => {
+      if (error) {
+        console.error('Error updating user:', error);
+        return res.status(500).send('Error updating user');
+      }
+      console.log('User updated in MySQL');
+      res.status(200).send('User updated in MySQL');
+    });
+  });
 module.exports = app;
