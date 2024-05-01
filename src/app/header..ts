@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgClass } from '@angular/common';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-header',
 standalone:true,
-imports:[RouterLink,CommonModule,NgClass],
+imports:[RouterLink,CommonModule,NgClass , NgFor],
   template: `
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -29,8 +30,8 @@ imports:[RouterLink,CommonModule,NgClass],
             </button>
             <ul class="dropdown-menu" [ngClass]="{ 'show': isDropdownOpen }">
               <li><a class="dropdown-item" routerLink="users"> users</a></li>
-              <li><a class="dropdown-item" routerLink="/msgs"> msgs</a></li>
-              <li><a class="dropdown-item" href="#"> reviews</a></li>
+              <li><a class="dropdown-item" routerLink="msgs"> msgs</a></li>
+              <li><a class="dropdown-item" routerLink="showreview"> reviews</a></li>
               <li><a class="dropdown-item" routerLink="Addproduct">Add products</a></li>
               <li><a class="dropdown-item"  routerLink="Addusers">Add users</a></li>
             </ul>

@@ -9,6 +9,7 @@ import { AddusersComponent } from './addusers';
 import { ContactComponent } from './contact';
 import { MsgsComponent } from './msgs';
 import { ReviewComponent } from './review';
+import { ShowreviewComponent } from './showreview';
 
 
 export const routes: Routes = [
@@ -21,6 +22,7 @@ export const routes: Routes = [
     {path:'users',component:UsersComponent},
     {path:'contact',component:ContactComponent},
     {path:'review',component:ReviewComponent},
+    {path:'showreview',component:ShowreviewComponent},
     {path:'msgs',component:MsgsComponent}
 
 

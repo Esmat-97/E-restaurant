@@ -33,7 +33,7 @@ app.get('/select', (req, res) => {
 
 
 app.get('/', (req, res) => {
-    const query = "SELECT * FROM guests";
+    const query = "SELECT * FROM  review  INNER JOIN guests on review.guest_id = guests.guest_id ";
     con.query(query, (err, result) => {
         if (err) {
             console.error("Error executing query:", err);
