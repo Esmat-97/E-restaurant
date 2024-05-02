@@ -32,8 +32,9 @@ app.get('/select', (req, res) => {
 });
 
 
-app.get('/', (req, res) => {
+app.get('/', (req, res ,next) => {
     const query = "SELECT * FROM guests";
+
     con.query(query, (err, result) => {
         if (err) {
             console.error("Error executing query:", err);
